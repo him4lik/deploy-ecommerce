@@ -4,3 +4,7 @@ services:
         build:
             context: ./api
             dockerfile: Dockerfile.django
+    postgres:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.postgres

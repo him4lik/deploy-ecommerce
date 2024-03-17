@@ -1,0 +1,23 @@
+version: '3'
+services:
+    api:
+        ports:
+            - "8002:8000"
+        volumes:
+            - ./api:/code
+        env_file: .env_dev
+        deploy:
+            resources:
+                limits:
+                    memory: 3G
+
+    postgres:
+        ports:
+            - "9802:5432"
+        restart: always
+        volumes:
+          - /dbpool/ubuntu/finaldata:/data
+        deploy:
+          resources:
+            limits:
+              memory: 2G
