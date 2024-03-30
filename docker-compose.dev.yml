@@ -16,7 +16,7 @@ services:
             - "9802:5432"
         restart: always
         volumes:
-          - /dbpool/ubuntu/finaldata:/data
+          - /dbpool/ubuntu/db_data/:/data
         deploy:
           resources:
             limits:
