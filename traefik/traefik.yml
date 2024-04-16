@@ -1,0 +1,41 @@
+api:
+  dashboard: true
+log:
+  level: ERROR
+providers:
+  file:
+    directory: "/etc/traefik"
+docker:
+  exposedbydefault: false                                                                                                                                                                                    
+                                                                                                                                                                                                            
+entrypoints:                                                                                                                                                                                                   
+ web:                                                                                                                                                                                                         
+   address: ":80"                                                                                                                                                                                             
+ websecure:                                                                                                                                                                                                   
+   address: ":443"                                                                                                                                                                                            
+ rabbitmqdev:                                                                                                                                                                                                 
+   address: ":5671"                                                                                                                                                                                           
+ rabbitmqprod:                                                                                                                                                                                                
+   address: ":5672"                                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                              
+certificatesresolvers:                                                                                                                                                                                         
+  myresolver:                                                                                                                                                                                                  
+    acme:                                                                                                                                                                                                      
+      httpchallenge:                                                                                                                                                                                           
+        entrypoint: web                                                                                                                                                                                        
+      email: himalik@gmail.com                                                                                                                                                                           
+      storage: "/letsencrypt/acme.json"                                                                                                                                                                        
+                                                                                                                                                                                                              
+tls:                                                                                                                                                                                                           
+  options:                                                                                                                                                                                                     
+    default:                                                                                                                                                                                                   
+      minVersion: VersionTLS12                                                                                                                                                                                 
+      cipherSuites:                                                                                                                                                                                            
+        #        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384                                                                                                                                                     
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384                                                                                                                                                                
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256                                                                                                                                                              
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256                                                                                                                                                                
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256                                                                                                                                                        
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256                                                                                                                                                          
+         #        - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384                                                                                                                                                       
+         #        - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 

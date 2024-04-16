@@ -21,3 +21,9 @@ services:
           resources:
             limits:
               memory: 2G
+
+    worker:                                                                                                                                                                                                    
+        volumes:                                                                                                                                                                                              
+            - ./api:/code                                                                                                                                                                                      
+        env_file: .env_dev                                                                                                                                                                                     
+        restart: always

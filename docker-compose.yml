@@ -8,3 +8,8 @@ services:
         build:
             context: ./api
             dockerfile: Dockerfile.postgres
+
+    worker:                                                                                                                                                                                                    
+        build:                                                                                                                                                                                                 
+            context: ./api                                                                                                                                                                                     
+            dockerfile: Dockerfile.worker
