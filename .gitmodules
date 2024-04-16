@@ -1,3 +1,6 @@
 [submodule "api"]
 	path = api
 	url = https://github.com/him4lik/api.git
+[submodule "web"]
+	path = web
+	url = git@github.com:him4lik/web.git
