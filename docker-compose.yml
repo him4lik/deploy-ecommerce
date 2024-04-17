@@ -1,15 +1,21 @@
-version: '3'
+# version: '3.8'
 services:
     api:
         build:
             context: ./api
             dockerfile: Dockerfile.django
+
     postgres:
         build:
             context: ./api
             dockerfile: Dockerfile.postgres
 
-    worker:                                                                                                                                                                                                    
-        build:                                                                                                                                                                                                 
-            context: ./api                                                                                                                                                                                     
-            dockerfile: Dockerfile.worker
+    # worker:                                                                                                                                                                                                    
+    #     build:                                                                                                                                                                                                 
+    #         context: ./api                                                                                                                                                                                     
+    #         dockerfile: Dockerfile.worker
+    
+    web:
+        build:
+            context: ./web
+            dockerfile: Dockerfile.django

@@ -1,8 +1,8 @@
-version: '3'
+# version: '3.8'
 services:
     api:
         ports:
-            - "8002:8000"
+            - "8000:8000"
         volumes:
             - ./api:/code
         env_file: .env_dev
@@ -22,8 +22,19 @@ services:
             limits:
               memory: 2G
 
-    worker:                                                                                                                                                                                                    
-        volumes:                                                                                                                                                                                              
-            - ./api:/code                                                                                                                                                                                      
-        env_file: .env_dev                                                                                                                                                                                     
-        restart: always
+    # worker:                                                                                                                                                                                                    
+    #     volumes:                                                                                                                                                                                              
+    #         - ./api:/code                                                                                                                                                                                      
+    #     env_file: .env_dev                                                                                                                                                                                     
+    #     restart: always
+
+    web:
+        ports:
+            - "8001:8001"
+        volumes:
+            - ./web:/code
+        env_file: .env_dev
+        deploy:
+            resources:
+                limits:
+                    memory: 3G
