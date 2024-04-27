@@ -1,4 +1,3 @@
-# version: '3.8'
 services:
     api:
         build:
@@ -9,13 +8,17 @@ services:
         build:
             context: ./api
             dockerfile: Dockerfile.postgres
-
-    # worker:                                                                                                                                                                                                    
-    #     build:                                                                                                                                                                                                 
-    #         context: ./api                                                                                                                                                                                     
-    #         dockerfile: Dockerfile.worker
     
-    web:
+    website:
         build:
             context: ./web
             dockerfile: Dockerfile.django
+
+    worker:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.worker
+    beat:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.beat

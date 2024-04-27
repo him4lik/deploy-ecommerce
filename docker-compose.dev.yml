@@ -1,8 +1,7 @@
-# version: '3.8'
 services:
     api:
         ports:
-            - "8000:8000"
+            - "8001:8000"
         volumes:
             - ./api:/code
         env_file: .env_dev
@@ -10,6 +9,8 @@ services:
             resources:
                 limits:
                     memory: 3G
+        # networks:
+        #     - inditan_dev
 
     postgres:
         ports:
@@ -21,20 +22,31 @@ services:
           resources:
             limits:
               memory: 2G
+        # networks:
+        #     - inditan_dev
 
-    # worker:                                                                                                                                                                                                    
-    #     volumes:                                                                                                                                                                                              
-    #         - ./api:/code                                                                                                                                                                                      
-    #     env_file: .env_dev                                                                                                                                                                                     
-    #     restart: always
-
-    web:
+    website:
         ports:
-            - "8001:8001"
-        volumes:
+            - "8101:8000"
+        volumes:    
             - ./web:/code
         env_file: .env_dev
         deploy:
             resources:
                 limits:
                     memory: 3G
+        # networks:
+        #     - inditan_dev
+    # beat:
+    #     volumes:
+    #         - ./api:/code
+    #     env_file: .env_dev
+
+    # worker:
+    #     volumes:
+    #         - ./api:/code
+    #     env_file: .env_dev
+    #     restart: always
+# networks:
+#     inditan_dev:
+#         driver: overlay
