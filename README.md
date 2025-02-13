@@ -57,16 +57,16 @@ The web directory is mounted to /code inside the website container for live code
 PostgreSQL data is stored in /dbpool/user1/finaldata/.
 
 ## Usage
-###Running the Services
+### Running the Services
 Start all services:
     ```bash
     docker-compose up
     ```
-    Access the API at:
+Access the API at:
     ```bash
     http://localhost:8001
     ```
-    Access the website at:
+Access the website at:
     ```bash
     http://localhost:8101
     ```
@@ -79,10 +79,9 @@ Stop all services:
 ## Architecture
 
 ### The project uses the following architecture:
-####Django: Backend framework for handling HTTP requests, business logic, and database interactions.
-####PostgreSQL: Relational database for persistent data storage.
-####Celery: Handles asynchronous and periodic tasks.
-####Redis: Message broker for Celery and caching.
-####Docker: Containerization for easy deployment and scalability.
-
-    ####Docker Compose: Manages multi-container setup (API, Website, PostgreSQL, Redis, Celery Worker, Celery Beat).
+    - #### Django: Backend framework for handling HTTP requests, business logic, and database interactions.
+    - #### PostgreSQL: Relational database for persistent data storage.
+    - #### Celery: Handles asynchronous and periodic tasks.
+    - #### Redis: Message broker for Celery and caching.
+    - #### Docker: Containerization for easy deployment and scalability.
+    - #### Docker Compose: Manages multi-container setup (API, Website, PostgreSQL, Redis, Celery Worker, Celery Beat).
