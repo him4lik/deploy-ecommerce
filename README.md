@@ -26,16 +26,16 @@ sudo usermod -aG docker $USER && newgrp docker
 ### Steps
 
 Clone the repository:
-    ```bash
-    git clone --recurse-submodule https://github.com/him4lik/deploy-ecommerce.git
-    ```
+```bash
+git clone --recurse-submodule https://github.com/him4lik/deploy-ecommerce.git
+```
     
 ## Configuration
 ### 1. Add Aliases to .bash_aliases
 Add the following script to your .bash_aliases file for easier Docker management:
 
 ```bash
-alias alias dc='docker compose -f docker-compose.yml -f docker-compose.dev.yml --compatibility'
+alias dc='docker compose -f docker-compose.yml -f docker-compose.dev.yml --compatibility'
 alias dshell='docker exec -ti leaderboard_deploy_leaderboard_1 /bin/bash'
 dclogs(){
         dc logs --tail=100 --follow $@
@@ -51,20 +51,14 @@ dcrestart(){
 Create a .env_dev file in the root directory with the following variables:
 ```bash
 # Django Settings
-SECRET_KEY=your-secret-key
 DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
+PATH_SPEC=test
 
 # Database Settings
-POSTGRES_DB=yourdb
-POSTGRES_USER=youruser
-POSTGRES_PASSWORD=yourpassword
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
-
-# Redis Settings
-REDIS_URL=redis://redis:6379/0
-CELERY_BROKER_URL=redis://redis:6379/0
+DB_NAME=yourdb
+DB_USER=youruser
+DB_PASSWORD=yourpassword
+DB_HOST=postgres
 ```
 ### 3. Navigate to the project directory:
     ```bash
