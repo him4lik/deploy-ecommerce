@@ -1,6 +1,6 @@
 # E-Commerce Platform
 
-### A modern E-Commerce Platform built using Django and containerized with Docker. This platform provides a seamless shopping experience with features like product management, user authentication, order processing, and background task handling using Celery and Celery Beat. The project is designed for easy local deployment using Docker Compose.
+A modern E-Commerce Platform built using Django and containerized with Docker. This platform provides a seamless shopping experience with features like product management, user authentication, order processing, and background task handling using Celery and Celery Beat. The project is designed for easy local deployment using Docker Compose.
 
 ## Features
 Product Management: Add, update, and delete products.
