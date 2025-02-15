@@ -9,25 +9,19 @@ services:
             resources:
                 limits:
                     memory: 3G
-        # networks:
-        #     - inditan_dev
-
     postgres:
         ports:
-            - "9802:5432"
+            - "9803:5432"
         restart: always
         volumes:
-          - /dbpool/user1/finaldata/:/data
+          - ../ecommerce_data:/data
         deploy:
           resources:
             limits:
               memory: 2G
-        # networks:
-        #     - inditan_dev
-
     website:
         ports:
-            - "8101:8000"
+            - "8101:8001"
         volumes:    
             - ./web:/code
         env_file: .env_dev
@@ -35,18 +29,34 @@ services:
             resources:
                 limits:
                     memory: 3G
-        # networks:
-        #     - inditan_dev
-    # beat:
-    #     volumes:
-    #         - ./api:/code
-    #     env_file: .env_dev
-
-    # worker:
-    #     volumes:
-    #         - ./api:/code
-    #     env_file: .env_dev
-    #     restart: always
-# networks:
-#     inditan_dev:
-#         driver: overlay
+    redis:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.redis
+        container_name: redis
+        ports:
+            - "6379:6379"
+        restart: always
+        volumes:
+            - ../redis_data:/data
+    beat:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.beat
+        volumes:
+            - ./api:/code
+        env_file: .env_dev
+        depends_on:
+            - redis
+            - api
+            - worker
+    worker:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.worker
+        volumes:
+            - ./api:/code
+        env_file: .env_dev
+        restart: always
+        depends_on:
+            - redis
