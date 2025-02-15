@@ -61,13 +61,13 @@ DB_PASSWORD=yourpassword
 DB_HOST=postgres
 ```
 ### 3. Navigate to the project directory:
-    ```bash
-    cd deploy-ecommerce
-    ```
+```bash
+cd deploy-ecommerce
+```
 ### 4. Start the services using command added in .bash_aliases file:
-    ```bash
-    dcrestart
-    ```
+```bash
+dcrestart
+```
 ### Volumes
 The api directory is mounted to /code inside the api container for live code updates.
 The web directory is mounted to /code inside the website container for live code updates.
@@ -76,22 +76,22 @@ PostgreSQL data is stored in /dbpool/user1/finaldata/.
 ## Usage
 ### Running the Services
 Start all services:
-    ```bash
-    docker-compose up
-    ```
+```bash
+docker-compose up
+```
 Access the API at:
-    ```bash
-    http://localhost:8001
-    ```
+```bash
+http://localhost:8001
+```
 Access the website at:
-    ```bash
-    http://localhost:8101
-    ```
+```bash
+http://localhost:8101
+```
 ### Stopping the Services
 Stop all services:
-    ```bash
-    docker-compose down
-    ```
+```bash
+docker-compose down
+```
 
 ## Architecture
 
