@@ -71,13 +71,13 @@ dcrestart
 ### Volumes
 The api directory is mounted to /code inside the api container for live code updates.
 The web directory is mounted to /code inside the website container for live code updates.
-PostgreSQL data is stored in /dbpool/user1/finaldata/.
+PostgreSQL data is stored in ./ecommerce_data
 
 ## Usage
 ### Running the Services
 Start all services:
 ```bash
-docker-compose up
+dcrestart
 ```
 Access the API at:
 ```bash
@@ -90,7 +90,7 @@ http://localhost:8101
 ### Stopping the Services
 Stop all services:
 ```bash
-docker-compose down
+dc down
 ```
 
 ## Architecture
