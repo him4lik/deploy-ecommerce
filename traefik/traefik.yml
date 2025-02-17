@@ -15,19 +15,3 @@ entrypoints:
     address: ":80"
   websecure:
     address: ":443"
-  # rabbitmqdev:
-  #   address: ":5671"
-  # rabbitmqprod:
-  #   address: ":5672"
-  # mqtts:
-  #   address: ":8883"
-  # mqtt-wss:
-  #   address: ":9001"
-
-# certificatesresolvers:
-#   myresolver:
-#     acme:
-#       httpchallenge:
-#         entrypoint: web
-#       email: aayushgoel92@gmail.com
-#       storage: "/letsencrypt/acme.json"

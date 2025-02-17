@@ -4,10 +4,6 @@ services:
         ports:
             - "80:80"
             - "443:443"
-            # - "5671:5671"
-            # - "5672:5672"
-            # - "8883:8883"
-            # - "9001:9001"
         volumes:
             - "./traefik:/etc/traefik" 
             - "./letsencrypt:/letsencrypt"
@@ -19,7 +15,7 @@ services:
             - "traefik.http.routers.dashboard.service=api@internal"
             - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
         networks:
-            - inditan_prod
+            - prod
         deploy:
             mode: replicated
             replicas: 1
@@ -34,7 +30,7 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.api-secure.entrypoints=websecure"
-            - "traefik.http.routers.api-secure.rule=Host(`inditan.localhost`) && PathPrefix(`/api/v1/`)"
+            - "traefik.http.routers.api-secure.rule=Host(`localhost`) && PathPrefix(`/api/v1/`)"
             - "traefik.http.routers.api-secure.tls.certresolver=myresolver"
         deploy:
             mode: replicated
@@ -55,7 +51,7 @@ services:
             start_period: 30m
             timeout: 5s
         networks:
-            - inditan_prod
+            - prod
         stop_grace_period: 30s
 
     worker:
@@ -71,22 +67,22 @@ services:
     website:
         build:
             context: ./website
-            dockerfile: Dockerfile.nginx
+            dockerfile: Dockerfile.django
         volumes:
             - static:/static
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.website.entrypoints=web"
             - "traefik.http.routers.website.middlewares=redirect-to-https@file"
-            - "traefik.http.routers.website.rule=Host(`getkosh.com`)"
+            - "traefik.http.routers.website.rule=Host(`localhost`)"
             - "traefik.http.routers.website-secure.entrypoints=websecure"
-            - "traefik.http.routers.website-secure.rule=Host(`getkosh.com`)"
+            - "traefik.http.routers.website-secure.rule=Host(`localhost`)"
             - "traefik.http.routers.website-secure.tls.certresolver=myresolver"
             - "traefik.http.routers.static-secure.entrypoints=websecure"
-            - "traefik.http.routers.static-secure.rule=Host(`getkosh.com`) && PathPrefix(`/api/v1/static/`)"
+            - "traefik.http.routers.static-secure.rule=Host(`localhost`) && PathPrefix(`/api/v1/static/`)"
             - "traefik.http.routers.static-secure.tls.certresolver=myresolver"
         networks:
-            - inditan_prod
+            - prod
         deploy:
             mode: replicated
             replicas: 1
