@@ -46,20 +46,6 @@ dcrestart(){
         dc up --build -d $@
 }
 ```
-### 2. Environment Variables
-
-Create a .env_dev file in the root directory with the following variables:
-```bash
-# Django Settings
-DEBUG=True
-PATH_SPEC=test
-
-# Database Settings
-DB_NAME=yourdb
-DB_USER=youruser
-DB_PASSWORD=yourpassword
-DB_HOST=postgres
-```
 ### 3. Navigate to the project directory:
 ```bash
 cd deploy-ecommerce
