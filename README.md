@@ -46,11 +46,15 @@ dcrestart(){
         dc up --build -d $@
 }
 ```
-### 3. Navigate to the project directory:
+### 3. Apply changes of .bash_aliases
+```bash
+source .bash_aliases
+```
+### 4. Navigate to the project directory:
 ```bash
 cd deploy-ecommerce
 ```
-### 4. Start the services using command added in .bash_aliases file:
+### 5. Start the services using command added in .bash_aliases file:
 ```bash
 dcrestart
 ```
