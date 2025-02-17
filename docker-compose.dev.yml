@@ -21,7 +21,7 @@ services:
               memory: 2G
     website:
         ports:
-            - "8101:8001"
+            - "8101:8000"
         volumes:    
             - ./web:/code
         env_file: .env_dev
@@ -30,9 +30,6 @@ services:
                 limits:
                     memory: 3G
     redis:
-        build:
-            context: ./api
-            dockerfile: Dockerfile.redis
         container_name: redis
         ports:
             - "6379:6379"
@@ -40,9 +37,6 @@ services:
         volumes:
             - ../redis_data:/data
     beat:
-        build:
-            context: ./api
-            dockerfile: Dockerfile.beat
         volumes:
             - ./api:/code
         env_file: .env_dev
@@ -51,9 +45,6 @@ services:
             - api
             - worker
     worker:
-        build:
-            context: ./api
-            dockerfile: Dockerfile.worker
         volumes:
             - ./api:/code
         env_file: .env_dev

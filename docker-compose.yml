@@ -22,3 +22,7 @@ services:
         build:
             context: ./api
             dockerfile: Dockerfile.beat
+    redis:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.redis
